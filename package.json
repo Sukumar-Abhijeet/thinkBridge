@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "pods": "cd ios && pod install && cd .."
+    "pods": "cd ios && pod install && cd ..",
+    "clean": "rm -rf node_modules && rm -rf ios/Pods  && rm -rf ios/build && rm -rf android/app/build"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
