@@ -6,6 +6,7 @@ import {View,Image,StyleSheet} from 'react-native';
 import Button from '../../../components/Button';
 import { DEF_CAT } from '../../../@redux/reducers/categoryReducer';
 import Toast from 'react-native-simple-toast';
+import { moderateScale } from '../../../utils/helpers';
 
 interface TilesProps{
     tile:{
@@ -27,7 +28,6 @@ const Tiles = ({tile,category,categoryStoreData} : TilesProps) =>{
 
     const handleAddToFev = () =>{
         try{
-            console.log('fevCategoriesData',fevCategoriesData);
             fevCategoriesData.push(tile);
             setAddToFev(true);
             setTimeout(()=>{
@@ -52,8 +52,8 @@ const Tiles = ({tile,category,categoryStoreData} : TilesProps) =>{
  export default Tiles;
 const styles = StyleSheet.create({
     imageBox:{
-        width:160,
-        height:160,
+        width:moderateScale(150),
+        height:moderateScale(150),
         borderRadius:10,
     },
     tileContainer:{
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     button:{
         position:'absolute',
-        bottom:0,
-        right:0,
+        bottom:5,
+        right:5,
     }
 });

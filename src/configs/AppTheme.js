@@ -12,6 +12,7 @@ const APP_COLORS = {
 
 const TEXT_COLORS = {
     primary: '#FFFFFF',
+    secondary:'#000000',
 }
 
 const APP_SPACING = {

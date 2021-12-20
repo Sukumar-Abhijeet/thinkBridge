@@ -18,6 +18,7 @@ export type AppTheme  = {
     },
     textColors:{
         primary:string,
+        secondary:string,
     }
     spacing : {
         tiny:number,

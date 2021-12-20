@@ -8,6 +8,7 @@ import Tiles from './tiles';
 import FabButton from '../../../components/Fab/index';
 import AddMedia from './addMedia';
 import { DEF_CAT } from '../../../@redux/reducers/categoryReducer';
+import withAppTheme, { AppTheme } from '../../../hoc/withAppTheme';
 
 interface CategoryViewScreenProps{
     categoryStoreData:Object,
@@ -17,7 +18,8 @@ interface CategoryViewScreenProps{
             category:string
         }
     },
-    categoriesList:Array<string>
+    categoriesList:Array<string>,
+    theme : AppTheme
 }
 
 const CategoryViewScreen = ({...props}: CategoryViewScreenProps) =>{
@@ -25,7 +27,8 @@ const CategoryViewScreen = ({...props}: CategoryViewScreenProps) =>{
         navigation,
         route:{params:{category}},
         categoryStoreData,
-        categoriesList
+        categoriesList,
+        theme:{textColors:{secondary}}
     } = props;
 
     const [showModal, setShowModal] = useState(false);
@@ -50,7 +53,7 @@ const CategoryViewScreen = ({...props}: CategoryViewScreenProps) =>{
          <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.wrapper}>
                 <View style={styles.tilesWrapper}>
-                    {categoryData && categoryData.length ? categoryData.map((item,index) => <Tiles categoryStoreData={categoryStoreData} category={category} tile={item} key={index} />) : <Text>No Data</Text>}
+                    {categoryData && categoryData.length ? categoryData.map((item,index) => <Tiles categoryStoreData={categoryStoreData} category={category} tile={item} key={index} />) : <Text style={{color:secondary}}>No Data</Text>}
                 </View>
             </ScrollView>
             <View style={styles.addButton}>
@@ -88,4 +91,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps)(CategoryViewScreen);
+export default connect(mapStateToProps)(withAppTheme(CategoryViewScreen));

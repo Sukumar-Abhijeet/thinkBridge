@@ -18,8 +18,17 @@ interface ButtonProps{
 const Button = ({...props}: ButtonProps) =>{
     const {theme,text,onPress, styles : customStyles, textProps,isDisabled,variant} = props;
      return(
-         <TouchableOpacity disabled={isDisabled} onPress={onPress} style={[styles(theme).buttonContainer,customStyles,isDisabled && {backgroundColor:theme.colors.dark},variant&& styles(theme).outline ]}>
-             <Text style={[styles(theme).defaultText, variant && styles(theme).textVariant]} {...textProps}>{text}</Text>
+         <TouchableOpacity  
+            disabled={isDisabled} 
+            onPress={onPress} 
+            style={[styles(theme).buttonContainer,customStyles,isDisabled && {backgroundColor:theme.colors.dark},variant&& styles(theme).outline ]}
+        >
+             <Text 
+                style={[styles(theme).defaultText, variant && styles(theme).textVariant]} 
+                {...textProps}
+             >
+                 {text}
+             </Text>
          </TouchableOpacity>
      )
  };

@@ -4,6 +4,7 @@
 import React from 'react';
 import {TouchableOpacity,Text,StyleSheet} from 'react-native';
 import withAppTheme, { AppTheme } from '../../hoc/withAppTheme';
+import { moderateScale } from '../../utils/helpers';
 
 interface FabButtonProps{
     onPress:()=>void,
@@ -22,9 +23,9 @@ const FabButton = ({onPress,theme}: FabButtonProps) =>{
 const styles = theme => StyleSheet.create({
     circle:{
         backgroundColor:theme.colors.primary,
-        width:50,
-        height:50,
-        borderRadius:25,
+        width:moderateScale(50),
+        height:moderateScale(50),
+        borderRadius:moderateScale(25),
         justifyContent:'center',
         alignItems:'center',
     },

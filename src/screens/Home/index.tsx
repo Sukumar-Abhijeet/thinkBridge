@@ -4,22 +4,26 @@
 import React from 'react';
 import {SafeAreaView,View,Text,StyleSheet} from 'react-native';
 import Button from '../../components/Button';
+import withAppTheme, { AppTheme } from '../../hoc/withAppTheme';
 
 interface HomeScreenProps{
   navigation:{
     navigate:Function
-  }
+  },
+  theme:AppTheme
 }
 
-const HomeScreen = ({navigation}:HomeScreenProps) =>{
+const HomeScreen = ({navigation,theme}:HomeScreenProps) =>{
+
+  const {textColors:{secondary}} = theme;
 
   const navigateCategory = () => navigation.navigate('Categories');
 
      return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
-        <Text>Welcome to</Text>
-        <Text style={styles.thinkBridge}>ThinkBrigde</Text>
+        <Text style={{color:secondary}}>Welcome to</Text>
+        <Text style={[styles.thinkBridge,{color:secondary}]}>ThinkBrigde</Text>
         <Button
           styles={styles.button} 
           text={'View Categories'} 
@@ -30,7 +34,7 @@ const HomeScreen = ({navigation}:HomeScreenProps) =>{
   );
  };
 
- export default HomeScreen;
+ export default withAppTheme(HomeScreen);
  const styles = StyleSheet.create({
     container:{
       flex:1,

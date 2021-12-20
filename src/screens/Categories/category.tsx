@@ -3,25 +3,33 @@
  */
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
-import {View,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import {Text,StyleSheet,TouchableOpacity} from 'react-native';
+import withAppTheme, {AppTheme} from '../../hoc/withAppTheme';
+import { moderateScale } from '../../utils/helpers';
 
-const Category = ({category}) =>{
+interface CategoryProps{
+    category:string,
+    theme:AppTheme
+}
 
+const Category = ({category,theme} : CategoryProps) =>{
+
+    const {textColors:{secondary}} = theme;
     const navigation = useNavigation();
     const navigateToView= () => navigation.navigate('View',{category});
 
      return(
          <TouchableOpacity style={styles.categoryBox} onPress={navigateToView}>
-             <Text>{category}</Text>
+             <Text style={{color:secondary}}>{category}</Text>
          </TouchableOpacity>
      )
  };
 
- export default Category;
+ export default withAppTheme(Category);
 const styles = StyleSheet.create({
     categoryBox:{
-        width : 160,
-        height: 160,
+        width : moderateScale(140),
+        height: moderateScale(160),
         backgroundColor:'#ebebeb',
         borderRadius:10,
         marginBottom:20,

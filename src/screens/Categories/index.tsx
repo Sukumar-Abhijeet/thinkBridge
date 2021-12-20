@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import FabButton from '../../components/Fab';
 import Category from './category';
 import AddCategory from './addCategory';
+import { moderateScale } from '../../utils/helpers';
 
 interface CategoriesScreenProps{
     categoriesList:Array<string>
@@ -22,9 +23,11 @@ const CategoriesScreen = ({categoriesList}: CategoriesScreenProps) =>{
             <ScrollView>
                 <View style={styles.categoryBoxWrapper}> 
                     {categoriesList.map((category,index)=> <Category key={index} category={category} />)}
-                    <FabButton onPress={()=>setShowModal(true)}  />
                 </View>
             </ScrollView>
+            <View style={styles.fabWrapper}>
+            <FabButton onPress={()=>setShowModal(true)}  />
+            </View>
             <AddCategory categoriesList={categoriesList} showModal={showModal} setShowModal={setShowModal}  />
         </SafeAreaView>
      )
@@ -46,8 +49,13 @@ const CategoriesScreen = ({categoriesList}: CategoriesScreenProps) =>{
         flexDirection:'row',
         flexWrap:'wrap',
         justifyContent:'space-between',
-        padding:20
+        padding:moderateScale(20)
     },
+    fabWrapper:{
+        position:'absolute',
+        bottom:moderateScale(20),
+        right:moderateScale(20)
+    }
   });
 
  export default connect(mapStateToProps)(CategoriesScreen);
